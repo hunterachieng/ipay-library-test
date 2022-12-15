@@ -6,7 +6,7 @@ import { View, ScrollView , KeyboardAvoidingView} from "react-native";
 import styles from "./styles";
 import { ipayCashout } from "ipay-js-cashout-library";
 
-const Cashout = () => {
+const Cashout = ({navigation}) => {
 
     const handleSubmit=async(values)=>{
      const keystring = await  ipayCashout.cashout(
@@ -39,8 +39,8 @@ const Cashout = () => {
         values.crl,
         values.hashKey
      );
-     console.log(values);
-     console.log(keystring);
+     navigation.navigate('CashLink',{cashoutLink: keystring})
+     
     }
  return(
     <KeyboardAvoidingView
